@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elektron Ma'lumotnoma — Sirojiddinov Kamronbek</title>
+    <!-- Tailwind CSS for modern layouts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .document-font {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* A4 aspect container styling */
+        .a4-container {
+            width: 100%;
+            max-width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Diagonal watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-size: 52pt;
+            color: rgba(30, 58, 138, 0.04);
+            font-weight: 900;
+            pointer-events: none;
+            white-space: nowrap;
+            text-transform: uppercase;
+            user-select: none;
+            letter-spacing: 4px;
+        }
+
+        /* Print styling logic */
+        @media print {
+            body {
+                background: none !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .a4-container {
+                box-shadow: none !important;
+                border: none !important;
+                width: 100% !important;
+                max-width: none !important;
+                min-height: auto !important;
+                padding: 15mm 15mm !important;
+                margin: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen py-6 px-3 sm:px-6 flex flex-col items-center">
+
+    <!-- Control Header (Hidden when printing) -->
+    <header class="no-print w-full max-w-[210mm] mb-6 bg-white rounded-xl shadow-md p-4 border border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-700 font-bold text-lg">
+                UZ
+            </div>
+            <div>
+                <h1 class="text-sm font-semibold text-slate-800">E-Hukumat Hujjat Portali</h1>
+                <p class="text-xs text-slate-500">Elektron rasmiy ma'lumotnoma verifikatsiyasi</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+            <button onclick="toggleVerificationModal()" class="px-3.5 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-semibold flex items-center gap-1.5 transition">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Hujjatni tekshirish
+            </button>
+            <button onclick="window.print()" class="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold shadow flex items-center gap-1.5 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                Chop etish / PDF saqlash
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Document Card (Emulating A4 Sheet) -->
+    <main class="a4-container document-font p-6 sm:p-12 border border-slate-300 rounded-sm relative overflow-hidden bg-white">
+        
+        <!-- Background Decorative Watermark -->
+        <div class="watermark">E-HUKUMAT // RASMIY</div>
+
+        <!-- Official Header with Emblem -->
+        <div class="text-center border-b-2 border-blue-900 pb-5 mb-6 relative z-10">
+            <div class="flex justify-center mb-3">
+                <!-- SVG Coat of Arms of Uzbekistan -->
+                <svg class="w-20 h-20 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="46" fill="#F8FAFC" stroke="#1E3A8A" stroke-width="2"/>
+                    <path d="M10 50 C10 20, 90 20, 90 50 C90 80, 10 80, 10 50 Z" fill="#1E40AF" opacity="0.08"/>
+                    <circle cx="50" cy="45" r="18" fill="#FACC15" opacity="0.9"/>
+                    <path d="M50 20 L53 30 L63 30 L55 36 L58 46 L50 40 L42 46 L45 36 L37 30 L47 30 Z" fill="#2563EB"/>
+                    <path d="M38 32 A 8 8 0 0 0 50 24 A 10 10 0 0 1 38 32 Z" fill="#FFFFFF"/>
+                    <circle cx="54" cy="24" r="1" fill="#FFFFFF"/>
+                    <circle cx="58" cy="24" r="1" fill="#FFFFFF"/>
+                    <circle cx="62" cy="24" r="1" fill="#FFFFFF"/>
+                    <path d="M22 62 C32 42, 45 48, 50 56 C55 48, 68 42, 78 62 C65 58, 55 68, 50 72 C45 68, 35 58, 22 62 Z" fill="#1E3A8A"/>
+                    <path d="M25 74 H75 V78 H25 Z" fill="#059669"/>
+                    <path d="M25 78 H75 V80 H25 Z" fill="#DC2626"/>
+                    <path d="M25 80 H75 V84 H25 Z" fill="#0284C7"/>
+                </svg>
+            </div>
+
+            <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wide text-blue-950 mb-0.5">O'zbekiston Respublikasi Maktabgacha va Maktab Ta'limi Vazirligi</h2>
+            <h3 class="text-xs sm:text-sm font-semibold text-slate-800 mb-0.5">Andijon viloyati xalq ta'limi boshqarmasi</h3>
+            <h4 class="text-xs sm:text-sm font-bold text-slate-900">Andijon viloyati 37-sonli umumiy o'rta ta'lim maktabi</h4>
+
+            <!-- Official Status Badge -->
+            <div class="mt-3 inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-500 text-emerald-800 px-3 py-1 rounded-full text-[10pt] font-sans font-semibold">
+                <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                ✓ ELEKTRON HUJJAT TASDIQLANGAN
+            </div>
+        </div>
+
+        <!-- Document Title -->
+        <div class="text-center my-6 relative z-10">
+            <h1 class="text-xl sm:text-2xl font-bold uppercase tracking-wider text-blue-900 mb-1">MA'LUMOTNOMA</h1>
+            <p class="text-xs sm:text-sm font-bold text-slate-600">№ M-2026/10-1289</p>
+            <p class="text-[9pt] font-sans text-slate-500 mt-1">(Tizim identifikatori: QR-OQ-9842103-UZ)</p>
+        </div>
+
+        <!-- Information Table -->
+        <div class="my-6 relative z-10">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <tbody>
+                    <tr class="border-b border-dashed border-slate-300">
+                        <td class="py-2.5 font-bold text-slate-800 w-[38%]">O'quvchining F.I.SH.:</td>
+                        <td class="py-2.5 font-bold text-blue-950">Sirojiddinov Kamronbek</td>
+                    </tr>
+                    <tr class="border-b border-dashed border-slate-300">
+                        <td class="py-2.5 font-bold text-slate-800">Tug'ilgan yili:</td>
+                        <td class="py-2.5 font-semibold text-slate-900">2012-yil</td>
+                    </tr>
+                    <tr class="border-b border-dashed border-slate-300">
+                        <td class="py-2.5 font-bold text-slate-800">Ta'lim muassasasi:</td>
+                        <td class="py-2.5 font-semibold text-slate-900">Andijon viloyati 37-sonli umumiy o'rta ta'lim maktabi</td>
+                    </tr>
+                    <tr class="border-b border-dashed border-slate-300">
+                        <td class="py-2.5 font-bold text-slate-800">Sinfi:</td>
+                        <td class="py-2.5 font-semibold text-slate-900">8-sinf o'quvchisi</td>
+                    </tr>
+                    <tr class="border-b border-dashed border-slate-300">
+                        <td class="py-2.5 font-bold text-slate-800">Berilgan maqsadi:</td>
+                        <td class="py-2.5 font-semibold text-slate-900">Talab qilingan joyga taqdim etish uchun</td>
+                    </tr>
+                    <tr class="border-b border-dashed border-slate-300">
+                        <td class="py-2.5 font-bold text-slate-800">Hujjat berilgan sana:</td>
+                        <td class="py-2.5 font-bold text-slate-900">12.10.2026-yil</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Official Text Block -->
+        <div class="my-6 text-xs sm:text-sm text-justify leading-relaxed text-slate-800 relative z-10">
+            <p>
+                Ushbu ma'lumotnoma <strong>Sirojiddinov Kamronbek</strong> haqiqatdan ham Andijon viloyati 37-sonli umumiy oʻrta taʼlim maktabining <strong>8-sinfida</strong> tahsil olayotganligini hamda tibbiy ko'rikdan o'tganligini tasdiqlaydi.
+            </p>
+            <p class="mt-2 text-slate-600 italic text-[10pt] font-sans">
+                Izoh: "Elektron hukumat haqida"gi O'zbekiston Respublikasi Qonuniga muvofiq, ushbu elektron ma'lumotnoma rasmiy muhr va qo'lda qo'yilgan imzo bilan teng yuridik kuchga ega.
+            </p>
+        </div>
+
+        <!-- Doctor Signature and QR Verification Section -->
+        <div class="mt-8 pt-4 border-t border-slate-300 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 relative z-10">
+            <!-- Left Side Doctor Info & Signature -->
+            <div class="text-xs sm:text-sm space-y-2">
+                <!-- Doctor Signature Block -->
+                <div class="pt-1">
+                    <p class="font-bold text-slate-900">Shifokor: <span class="font-semibold text-blue-900">dr. Axmedov S.A.</span></p>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="text-[10pt] font-bold text-slate-700">Shifokor qo'li (imzasi):</span>
+                        <!-- Stylized SVG Signature -->
+                        <div class="w-32 h-10 border-b border-slate-400 flex items-center justify-center">
+                            <svg class="w-28 h-8 text-blue-900" viewBox="0 0 160 50" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 10 35 C 25 10, 30 5, 45 25 C 55 40, 40 45, 60 20 C 70 5, 80 15, 90 30 C 100 40, 110 10, 125 25 C 135 35, 145 20, 155 30" />
+                                <path d="M 30 25 C 50 20, 70 30, 110 15" stroke-dasharray="3 3" />
+                                <circle cx="140" cy="22" r="2" fill="currentColor" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-[9pt] font-sans text-slate-500 pt-2">Avtomatik shakllantirilgan vaqt: 12.10.2026 09:14:22</p>
+                <p class="text-[9pt] font-sans text-slate-500">Tizim holati: Verified / Active</p>
+            </div>
+
+            <!-- Right Side QR Code Verification -->
+            <div class="flex flex-col items-center sm:items-end text-center sm:text-right">
+                <div class="p-1.5 bg-white border border-slate-300 rounded shadow-sm">
+                    <svg class="w-28 h-28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" fill="white"/>
+                        <!-- Target Corners -->
+                        <rect x="5" y="5" width="25" height="25" fill="black"/>
+                        <rect x="9" y="9" width="17" height="17" fill="white"/>
+                        <rect x="13" y="13" width="9" height="9" fill="black"/>
+
+                        <rect x="70" y="5" width="25" height="25" fill="black"/>
+                        <rect x="74" y="9" width="17" height="17" fill="white"/>
+                        <rect x="78" y="13" width="9" height="9" fill="black"/>
+
+                        <rect x="5" y="70" width="25" height="25" fill="black"/>
+                        <rect x="9" y="74" width="17" height="17" fill="white"/>
+                        <rect x="13" y="78" width="9" height="9" fill="black"/>
+
+                        <!-- Data Modules Pattern -->
+                        <rect x="35" y="5" width="5" height="5" fill="black"/>
+                        <rect x="45" y="5" width="10" height="5" fill="black"/>
+                        <rect x="60" y="5" width="5" height="5" fill="black"/>
+                        <rect x="35" y="15" width="15" height="5" fill="black"/>
+                        <rect x="55" y="15" width="5" height="5" fill="black"/>
+
+                        <rect x="5" y="35" width="5" height="10" fill="black"/>
+                        <rect x="15" y="35" width="10" height="5" fill="black"/>
+                        <rect x="30" y="30" width="10" height="10" fill="black"/>
+                        <rect x="45" y="35" width="15" height="5" fill="black"/>
+                        <rect x="65" y="30" width="10" height="10" fill="black"/>
+                        <rect x="80" y="35" width="15" height="5" fill="black"/>
+
+                        <rect x="5" y="50" width="10" height="5" fill="black"/>
+                        <rect x="20" y="45" width="5" height="15" fill="black"/>
+                        <rect x="30" y="50" width="15" height="5" fill="black"/>
+                        <rect x="50" y="45" width="10" height="10" fill="black"/>
+                        <rect x="65" y="50" width="10" height="5" fill="black"/>
+                        <rect x="80" y="45" width="15" height="10" fill="black"/>
+
+                        <rect x="35" y="65" width="10" height="10" fill="black"/>
+                        <rect x="50" y="60" width="5" height="15" fill="black"/>
+                        <rect x="60" y="65" width="15" height="5" fill="black"/>
+                        <rect x="80" y="65" width="15" height="5" fill="black"/>
+
+                        <rect x="35" y="80" width="15" height="5" fill="black"/>
+                        <rect x="55" y="80" width="10" height="10" fill="black"/>
+                        <rect x="70" y="80" width="10" height="5" fill="black"/>
+                        <rect x="85" y="80" width="10" height="15" fill="black"/>
+                    </svg>
+                </div>
+                <p class="text-[8pt] font-sans font-semibold text-slate-700 mt-1">Haqiqiylikni tekshirish</p>
+                <p class="text-[8pt] font-sans text-blue-800 underline">my.gov.uz/verify</p>
+            </div>
+        </div>
+
+        <!-- Footer Seal Watermark -->
+        <div class="mt-8 text-center text-[8pt] font-sans text-slate-400 border-t border-slate-100 pt-3 relative z-10">
+            Yagona Interaktiv Davlat Xizmatlari Portali (my.gov.uz) orqali berilgan elektron ma'lumotnoma
+        </div>
+    </main>
+
+    <!-- Interactive Verification Modal -->
+    <div id="verificationModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <h3 class="font-bold text-slate-800 text-base">Hujjat haqiqiyligi tasdiqlandi</h3>
+                </div>
+                <button onclick="toggleVerificationModal()" class="text-slate-400 hover:text-slate-600 text-lg font-bold">&times;</button>
+            </div>
+            <div class="py-4 space-y-2 text-xs sm:text-sm text-slate-700">
+                <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900">
+                    <strong>Hujjat kodi:</strong> № M-2026/10-1289<br>
+                    <strong>Egasi:</strong> Sirojiddinov Kamronbek<br>
+                    <strong>Tug'ilgan yili:</strong> 2012-yil<br>
+                    <strong>Shifokor:</strong> dr. Axmedov S.A.<br>
+                    <strong>Tashkilot:</strong> Andijon viloyati 37-sonli maktab<br>
+                    <strong>Holati:</strong> Faol (Amalda)
+                </div>
+                <p class="text-slate-500 text-[11px] pt-1">
+                    Ushbu ma'lumot Yagona interaktiv davlat xizmatlari portali (my.gov.uz) ma'lumotlar bazasi bilan real vaqt rejimida mos keladi.
+                </p>
+            </div>
+            <div class="pt-2 flex justify-end">
+                <button onclick="toggleVerificationModal()" class="px-4 py-2 bg-blue-900 text-white font-semibold text-xs rounded-lg hover:bg-blue-950 transition">
+                    Yopish
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleVerificationModal() {
+            const modal = document.getElementById('verificationModal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
